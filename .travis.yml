@@ -14,7 +14,7 @@ script:
   - docker run r4ncid/worker-test yarn test
 
 
-  after_success:
+after_success:
   #Build the docker file
   - docker build -t r4ncid/multi-client ./client
   - docker build -t r4ncid/multi-api ./api

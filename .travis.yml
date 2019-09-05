@@ -12,3 +12,17 @@ script:
   - docker run -e CI=true r4ncid/react-test yarn test
   - docker run r4ncid/api-test yarn test
   - docker run r4ncid/worker-test yarn test
+
+
+  after_success:
+  #Build the docker file
+  - docker build -t r4ncid/multi-client ./client
+  - docker build -t r4ncid/multi-api ./api
+  - docker build -t r4ncid/multi-worker ./worker
+  - docker build -t r4ncid/multi-nginx ./ngnix
+  #login to dockerhub
+  - echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_ID --password-stdin
+  - docker push r4ncid/multi-client
+  - docker push r4ncid/multi-api
+  - docker push r4ncid/multi-worker
+  - docker push r4ncid/multi-nginx

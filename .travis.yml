@@ -19,8 +19,7 @@ after_success:
   - docker build -t r4ncid/multi-client ./client
   - docker build -t r4ncid/multi-api ./api
   - docker build -t r4ncid/multi-worker ./worker
-  - docker build -t r4ncid/multi-nginx ./ngnix
-  #login to dockerhub
+  - docker build -t r4ncid/multi-nginx ./nginx
   - echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_ID --password-stdin
   - docker push r4ncid/multi-client
   - docker push r4ncid/multi-api

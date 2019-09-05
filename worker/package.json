@@ -6,5 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }

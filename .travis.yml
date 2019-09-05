@@ -1,0 +1,9 @@
+sudo: require
+
+service:
+  - docker
+
+before_install:
+  - docker build -t r4ncid/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t r4ncid/api-test -f ./api/Dockerfile.dev ./api
+  - docker build -t r4ncid/worker-test -f ./worker/Dockerfile.dev ./worker
